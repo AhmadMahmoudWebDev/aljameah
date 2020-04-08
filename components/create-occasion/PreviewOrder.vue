@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
       <template v-slot:activator="{ on }">
         <v-card-actions>
-          <v-btn v-on="on" left color="info" ripple dark>
+          <v-btn left color="info" ripple dark v-on="on">
             معاينة الطلب
             <v-icon right>
               far fa-file-alt
@@ -14,13 +14,13 @@
       </template>
       <v-card>
         <v-toolbar dark color="#212121">
-          <v-btn @click="dialog = false" icon dark>
+          <v-btn icon dark @click="dialog = false">
             <v-icon>fa-window-close</v-icon>
           </v-btn>
           <v-toolbar-title>معاينة المناسبة</v-toolbar-title>
           <v-spacer />
           <v-toolbar-items>
-            <v-btn @click="dialog = false" dark text>
+            <v-btn dark text @click="dialog = false">
               تم
               <v-icon right>
                 fa-check
@@ -56,7 +56,7 @@
                     <p class="font-weight-bold holy-text">
                       صدق اللَّهُ العظيم
                     </p>
-                    <p class="font-weight-bold holy-text title">
+                    <p class="font-weight-bold holy-text">
                       إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ
                     </p>
                   </v-list-item-content>
@@ -124,5 +124,6 @@ export default {
   .holy-text {
     line-height: 1.7rem;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.3rem;
   }
 </style>
