@@ -25,6 +25,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -35,10 +36,29 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    // localforage
+    '@nuxtjs/localforage'
   ],
+  /* local forage options */
+  localforage: {
+    instances: [{
+      name: 'aljameah',
+      storeName: 'occasions'
+    }, {
+      name: 'aljameah',
+      storeName: 'latestNews'
+    }, {
+      name: 'aljameah',
+      storeName: 'members'
+    }, {
+      name: 'aljameah',
+      storeName: 'delegates'
+    }, {
+      name: 'aljameah',
+      storeName: 'medicalEqs'
+    }]
+  },
   /*
   ** Nuxt.js modules
   */
@@ -47,13 +67,37 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/auth',
+    'nuxt-webfontloader'
   ],
+  /*
+  ** auth options */
+  auth: {
+  // Options
+    strategies: {
+      //
+    }
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+  /* PWA */
+  pwa: {
+    workbox: {
+      /* workbox options */
+    },
+    icon: {
+      iconFileName: 'icon.jpg'
+    }
+  },
+  webfontloader: {
+    google: {
+      families: ['Lemonada&display=swap']
+    }
   },
   /*
   ** vuetify module configuration
@@ -62,7 +106,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -74,7 +118,18 @@ export default {
           success: colors.green.accent3
         }
       }
-    }
+    },
+    defaultAssets: {
+      font: {
+        family: 'Lemonada'
+      },
+      icons: 'fa'
+    },
+    lang: {
+      current: 'en'
+    },
+    rtl: true,
+    treeShake: true
   },
   /*
   ** Build configuration
