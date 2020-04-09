@@ -165,35 +165,37 @@ export default {
   },
   methods: {
     loadLatestNews () {
-      const online = navigator.onLine
-      if (online) {
-        Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
-        Parse.initialize(
-          'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
-          'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
-        )
-        const LatestNews = Parse.Object.extend('News')
-        const query = new Parse.Query(LatestNews)
-        query.find().then((results) => {
+      if (process.client) {
+        const online = navigator.onLine
+        if (online) {
+          Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
+          Parse.initialize(
+            'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
+            'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
+          )
+          const LatestNews = Parse.Object.extend('News')
+          const query = new Parse.Query(LatestNews)
+          query.find().then((results) => {
           // You can use the "get" method to get the value of an attribute
           // Ex: response.get("<ATTRIBUTE_NAME>")
-          results.forEach((latestNew) => {
-            this.latestNews.push({
-              id: latestNew.id,
-              title: latestNew.get('title'),
-              excerpt: latestNew.get('excerpt'),
-              image1: latestNew.get('image1'),
-              image2: latestNew.get('image2'),
-              image3: latestNew.get('image3'),
-              updatedAt: latestNew.get('updatedAt')
+            results.forEach((latestNew) => {
+              this.latestNews.push({
+                id: latestNew.id,
+                title: latestNew.get('title'),
+                excerpt: latestNew.get('excerpt'),
+                image1: latestNew.get('image1'),
+                image2: latestNew.get('image2'),
+                image3: latestNew.get('image3'),
+                updatedAt: latestNew.get('updatedAt')
+              })
             })
+            this.$localForage.latestNews.setItem('latestNews', this.latestNews)
           })
-          this.$localForage.latestNews.setItem('latestNews', this.latestNews)
-        })
-      } else {
-        this.$localForage.latestNews.getItem('latestNews').then((latestNews) => {
-          this.latestNews = latestNews
-        })
+        } else {
+          this.$localForage.latestNews.getItem('latestNews').then((latestNews) => {
+            this.latestNews = latestNews
+          })
+        }
       }
     }
   }

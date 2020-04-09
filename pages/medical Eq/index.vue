@@ -173,34 +173,36 @@ export default {
   },
   methods: {
     loadMedicalEqs () {
-      const online = navigator.onLine
-      if (online) {
-        Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
-        Parse.initialize(
-          'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
-          'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
-        )
-        const MedicalEq = Parse.Object.extend('MedicalEq')
-        const query = new Parse.Query(MedicalEq)
-        query.find().then((results) => {
+      if (process.client) {
+        const online = navigator.onLine
+        if (online) {
+          Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
+          Parse.initialize(
+            'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
+            'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
+          )
+          const MedicalEq = Parse.Object.extend('MedicalEq')
+          const query = new Parse.Query(MedicalEq)
+          query.find().then((results) => {
           // You can use the "get" method to get the value of an attribute
           // Ex: response.get("<ATTRIBUTE_NAME>")
-          results.forEach((medicalEq) => {
-            this.medicalEqs.push({
-              id: medicalEq.id,
-              title: medicalEq.get('title'),
-              excerpt: medicalEq.get('excerpt'),
-              image1: medicalEq.get('image1'),
-              image2: medicalEq.get('image2'),
-              image3: medicalEq.get('image3')
+            results.forEach((medicalEq) => {
+              this.medicalEqs.push({
+                id: medicalEq.id,
+                title: medicalEq.get('title'),
+                excerpt: medicalEq.get('excerpt'),
+                image1: medicalEq.get('image1'),
+                image2: medicalEq.get('image2'),
+                image3: medicalEq.get('image3')
+              })
             })
+            this.$localForage.medicalEqs.setItem('medicalEqs', this.medicalEqs)
           })
-          this.$localForage.medicalEqs.setItem('medicalEqs', this.medicalEqs)
-        })
-      } else {
-        this.$localForage.medicalEqs.getItem('medicalEqs').then((medicalEqs) => {
-          this.medicalEqs = medicalEqs
-        })
+        } else {
+          this.$localForage.medicalEqs.getItem('medicalEqs').then((medicalEqs) => {
+            this.medicalEqs = medicalEqs
+          })
+        }
       }
     }
   }

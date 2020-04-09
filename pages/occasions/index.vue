@@ -104,41 +104,43 @@ export default {
   },
   methods: {
     loadOccasions () {
-      const online = navigator.onLine
-      if (online) {
-        Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
-        Parse.initialize(
-          'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
-          'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
-        )
-        const Occasion = Parse.Object.extend('Occasion')
-        const query = new Parse.Query(Occasion)
-        query.descending('createdAt')
-        query.find().then((results) => {
+      if (process.client) {
+        const online = navigator.onLine
+        if (online) {
+          Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
+          Parse.initialize(
+            'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
+            'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
+          )
+          const Occasion = Parse.Object.extend('Occasion')
+          const query = new Parse.Query(Occasion)
+          query.descending('createdAt')
+          query.find().then((results) => {
           // You can use the "get" method to get the value of an attribute
           // Ex: response.get("<ATTRIBUTE_NAME>")
-          results.forEach((occasion) => {
-            this.occasions.push({
-              id: occasion.id,
-              name: occasion.get('name'),
-              relatives: occasion.get('relatives'),
-              deathTime: occasion.get('deathTime'),
-              mosqueName: occasion.get('mosqueName'),
-              graveyard: occasion.get('graveyard'),
-              prayTime: occasion.get('prayTime'),
-              place: occasion.get('place'),
-              phone: occasion.get('phone'),
-              gender: occasion.get('gender'),
-              deathDate: occasion.get('deathDate'),
-              buryDate: occasion.get('deathDate')
+            results.forEach((occasion) => {
+              this.occasions.push({
+                id: occasion.id,
+                name: occasion.get('name'),
+                relatives: occasion.get('relatives'),
+                deathTime: occasion.get('deathTime'),
+                mosqueName: occasion.get('mosqueName'),
+                graveyard: occasion.get('graveyard'),
+                prayTime: occasion.get('prayTime'),
+                place: occasion.get('place'),
+                phone: occasion.get('phone'),
+                gender: occasion.get('gender'),
+                deathDate: occasion.get('deathDate'),
+                buryDate: occasion.get('deathDate')
+              })
             })
+            this.$localForage.occasions.setItem('occasions', this.occasions)
           })
-          this.$localForage.occasions.setItem('occasions', this.occasions)
-        })
-      } else {
-        this.$localForage.occasions.getItem('occasions').then((occasions) => {
-          this.occasions = occasions
-        })
+        } else {
+          this.$localForage.occasions.getItem('occasions').then((occasions) => {
+            this.occasions = occasions
+          })
+        }
       }
     },
     dayName (dateString) {

@@ -53,32 +53,34 @@ export default {
   },
   methods: {
     loadMembers () {
-      const online = navigator.onLine
-      if (online) {
-        Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
-        Parse.initialize(
-          'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
-          'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
-        )
-        const Member = Parse.Object.extend('Member')
-        const query = new Parse.Query(Member)
-        query.find().then((results) => {
+      if (process.client) {
+        const online = navigator.onLine
+        if (online) {
+          Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
+          Parse.initialize(
+            'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
+            'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
+          )
+          const Member = Parse.Object.extend('Member')
+          const query = new Parse.Query(Member)
+          query.find().then((results) => {
           // You can use the "get" method to get the value of an attribute
           // Ex: response.get("<ATTRIBUTE_NAME>")
-          results.forEach((member) => {
-            this.members.push({
-              id: member.id,
-              name: member.get('name'),
-              title: member.get('title'),
-              mobile: member.get('mobile')
+            results.forEach((member) => {
+              this.members.push({
+                id: member.id,
+                name: member.get('name'),
+                title: member.get('title'),
+                mobile: member.get('mobile')
+              })
             })
+            this.$localForage.members.setItem('members', this.members)
           })
-          this.$localForage.members.setItem('members', this.members)
-        })
-      } else {
-        this.$localForage.members.getItem('members').then((members) => {
-          this.members = members
-        })
+        } else {
+          this.$localForage.members.getItem('members').then((members) => {
+            this.members = members
+          })
+        }
       }
     }
   }
