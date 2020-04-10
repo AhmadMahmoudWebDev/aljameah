@@ -15,9 +15,9 @@
           shaped
           raised
         >
-          <v-card-title>
+          <v-card-text>
             لا يوجد مناسبات جديدة
-          </v-card-title>
+          </v-card-text>
         </v-card>
       </v-col>
       <v-col

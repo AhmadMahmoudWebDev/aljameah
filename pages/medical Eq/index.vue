@@ -15,9 +15,9 @@
           shaped
           raised
         >
-          <v-card-title>
+          <v-card-text>
             لا يوجد معدّات طبية جديدة
-          </v-card-title>
+          </v-card-text>
         </v-card>
       </v-col>
       <v-col
@@ -37,7 +37,7 @@
         >
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title class="headline">
+              <v-list-item-title>
                 {{ medicalEq.title }}
               </v-list-item-title>
             </v-list-item-content>

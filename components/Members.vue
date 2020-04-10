@@ -1,11 +1,11 @@
 <template>
   <v-card-text>
-    <h2 class="title">
+    <v-card-title>
       أعضاء مجلس الإدارة:
-    </h2>
+    </v-card-title>
     <v-list-item v-for="(member) in members" :key="member.id">
       <v-list-item-content>
-        <v-list-item-title class="subtitle-1 font-weight-bold">
+        <v-list-item-title class="font-weight-bold">
           {{ member.name }}
         </v-list-item-title>
         <v-list-item-subtitle>{{ member.title }}</v-list-item-subtitle>

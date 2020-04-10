@@ -59,7 +59,7 @@
           text
           @click="step--"
         >
-          Back
+          رجوع
         </v-btn>
         <v-spacer />
         <v-btn
@@ -68,7 +68,7 @@
           depressed
           @click="step++"
         >
-          Next
+          التالي
         </v-btn>
       </v-card-actions>
     </v-form>

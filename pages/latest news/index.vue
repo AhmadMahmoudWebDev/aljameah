@@ -15,9 +15,9 @@
           shaped
           raised
         >
-          <v-card-title>
+          <v-card-text>
             لا يوجد أخبار جديدة للجمعية
-          </v-card-title>
+          </v-card-text>
         </v-card>
       </v-col>
       <v-col
@@ -37,7 +37,7 @@
         >
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title class="headline">
+              <v-list-item-title>
                 {{ latestNew.title }}
               </v-list-item-title>
               <v-list-item-subtitle>
