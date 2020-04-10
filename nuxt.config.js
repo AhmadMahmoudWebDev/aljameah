@@ -68,17 +68,9 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/auth',
     'nuxt-webfontloader'
   ],
   /*
-  ** auth options */
-  auth: {
-  // Options
-    strategies: {
-      //
-    }
-  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
@@ -138,7 +130,11 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend (config, { isClient }) {
+      if (isClient) {
+        config.optimization.splitChunks.maxSize = 200000
+        config.performance.maxEntrypointSize = 10200000
+      }
     }
   }
 }
