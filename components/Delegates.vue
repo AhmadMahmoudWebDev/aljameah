@@ -58,7 +58,7 @@ export default {
   methods: {
     loadDelegates () {
       if (process.client) {
-        const online = process.client.navigator.onLine
+        const online = navigator.onLine
         if (online) {
           Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
           Parse.initialize(
