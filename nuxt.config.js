@@ -11,7 +11,9 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+      { name: 'theme-color', content: '#035251' },
+      { name: 'msapplication-TileColor', content: '#035251' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -84,6 +86,14 @@ export default {
     },
     icon: {
       iconFileName: 'icon.jpg'
+    },
+    manifest: {
+      name: 'الجمعية التضامنية الإجتماعية الخيرية',
+      short_name: 'الجمعية التضامنية',
+      theme_color: '#035251',
+      background_color: '#21443D',
+      display: 'fullscreen',
+      orientation: 'portrait'
     }
   },
   webfontloader: {
