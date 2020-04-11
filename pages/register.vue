@@ -9,8 +9,8 @@
         xl="6"
       >
         <v-card :loading="loading">
+          <v-card-title>الإشتراك في موقع الجمعية</v-card-title>
           <v-card-text>
-            <v-card-title>الإشتراك في موقع الجمعية</v-card-title>
             <v-form
               ref="form"
               v-model="valid"

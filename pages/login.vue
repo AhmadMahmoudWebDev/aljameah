@@ -9,9 +9,9 @@
         xl="6"
       >
         <v-card dark :loading="loading">
+          <v-card-title>تسجيل الدخول</v-card-title>
+          <v-card-subtitle>يرجى تسجيل الدخول للموقع الجمعية لإنشاء مناسبة جديدة</v-card-subtitle>
           <v-card-text>
-            <v-card-title>تسجيل الدخول</v-card-title>
-            <v-card-subtitle>يرجى تسجيل الدخول للموقع الجمعية لإنشاء مناسبة جديدة</v-card-subtitle>
             <v-form
               ref="form"
               v-model="valid"

@@ -6,7 +6,7 @@
     raised
     class="mt-3"
   >
-    <v-card-title>
+    <v-card-text>
       مندوبين الجمعية التضامنية
       <v-spacer />
       <v-text-field
@@ -16,7 +16,7 @@
         single-line
         hide-details
       />
-    </v-card-title>
+    </v-card-text>
     <v-data-table
       :headers="headers"
       :items="delegates"
