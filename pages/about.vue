@@ -15,7 +15,7 @@
           class="mt-3"
           raised
         >
-          <v-card-title class="headline">
+          <v-card-title>
             الجمعية التضامنية الإجتماعية الخيرية
           </v-card-title>
           <v-card-subtitle>
@@ -23,7 +23,7 @@
           </v-card-subtitle>
 
           <v-card-text>
-            <h3 class="title">
+            <h3>
               أهداف الجمعية:
             </h3>
             <ul class="px-4">

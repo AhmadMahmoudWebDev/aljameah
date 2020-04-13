@@ -8,9 +8,9 @@
         sm="6"
         xl="6"
       >
-        <v-card :loading="loading">
-          <v-card-title>الإشتراك في موقع الجمعية</v-card-title>
+        <v-card dark :loading="loading" color="#004D40">
           <v-card-text>
+            الإشتراك في موقع الجمعية
             <v-form
               ref="form"
               v-model="valid"

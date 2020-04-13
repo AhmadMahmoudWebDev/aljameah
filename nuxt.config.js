@@ -91,8 +91,8 @@ export default {
       name: 'الجمعية التضامنية الإجتماعية الخيرية',
       short_name: 'الجمعية التضامنية',
       theme_color: '#035251',
-      background_color: '#21443D',
-      display: 'fullscreen',
+      background_color: '#2C7F75',
+      display: 'standalone',
       orientation: 'portrait'
     }
   },

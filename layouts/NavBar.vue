@@ -52,7 +52,7 @@
       </template>
       <v-spacer />
       <nuxt-link to="/">
-        <v-avatar tile>
+        <v-avatar>
           <img
             src="https://ahmadmahmoud.sirv.com/aljameah/icon.gif?w=150&h=150"
             alt="aljameah logo"

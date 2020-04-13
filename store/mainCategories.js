@@ -26,9 +26,9 @@ export const state = () => ({
       link: '/medical Eq'
     },
     {
-      color: '#6A1B9A',
+      color: '#311B92',
       icon: 'fas fa-hands-helping',
-      iconColor: '#CE93D8',
+      iconColor: '#B39DDB',
       title: 'عن الجمعية',
       description: 'أهداف الجمعية، الإدارة، المندوبين',
       link: '/about'
