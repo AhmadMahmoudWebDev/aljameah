@@ -16,12 +16,13 @@
           raised
         >
           <v-card-text>
-            الجمعية التضامنية الإجتماعية الخيرية
+            <h3>
+              الجمعية التضامنية الإجتماعية الخيرية
+            </h3>
           </v-card-text>
-          <v-card-subtitle>
+          <v-card-subtitle class="pt-0">
             رقم و تاريخ شهرها: ٨٦٠-لعام ١٩٦٦<sub>م</sub> وتاريخ تعديل شهرها في ٢٨-٨-١٩٩٧<sub>م</sub>
           </v-card-subtitle>
-
           <v-card-text>
             <h3>
               أهداف الجمعية:
