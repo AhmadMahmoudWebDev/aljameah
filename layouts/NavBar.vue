@@ -100,14 +100,27 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-divider />
         <v-list-item href="/occasions/create" to="/occasions/create" link ripple>
           <v-list-item-icon>
             <v-icon>
               far fa-edit
             </v-icon>
           </v-list-item-icon>
-          إضافة مناسبة وفاة
+          <v-list-item-content>
+            <v-list-item-title>
+              إضافة مناسبة وفاة
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link ripple @click="installApp">
+          <v-list-item-icon>
+            <v-icon>
+              fas fa-download
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            تثبيت تطبيق الجمعية على جهازك
+          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -115,6 +128,14 @@
 </template>
 
 <script>
+let deferredPrompt
+if (process.client) {
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault()
+    // Stash the event so tit can be trigger later.
+    deferredPrompt = e
+  })
+}
 export default {
   name: 'Navbar',
   data: () => ({
@@ -125,6 +146,23 @@ export default {
   computed: {
     items () {
       return this.$store.state.mainCategories.items
+    }
+  },
+  methods: {
+    installApp () {
+      if (process.client) {
+        deferredPrompt.prompt()
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+          // eslint-disable-next-line no-console
+            console.log('User accepted the install prompt')
+          } else {
+          // eslint-disable-next-line no-console
+            console.log('User dismissed the install prompt')
+          }
+          deferredPrompt = null
+        })
+      }
     }
   }
 }
