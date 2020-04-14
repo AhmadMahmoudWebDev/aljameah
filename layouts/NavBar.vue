@@ -112,7 +112,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link ripple @click="installApp">
+        <v-list-item v-if="isInstalled" link ripple @click="installApp()">
           <v-list-item-icon>
             <v-icon>
               fas fa-download
@@ -141,7 +141,8 @@ export default {
   data: () => ({
     collapseOnScroll: true,
     drawer: false,
-    currentItem: ''
+    currentItem: '',
+    isInstalled: false
   }),
   computed: {
     items () {
@@ -156,6 +157,7 @@ export default {
           if (choiceResult.outcome === 'accepted') {
           // eslint-disable-next-line no-console
             console.log('User accepted the install prompt')
+            this.isInstalled = true
           } else {
           // eslint-disable-next-line no-console
             console.log('User dismissed the install prompt')
