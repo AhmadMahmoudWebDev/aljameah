@@ -20,7 +20,7 @@
                 v-model="logIn.username"
                 :counter="10"
                 :rules="nameRules"
-                label="إسم المستخدم"
+                label="إسم المستخدم الخاص بك"
                 required
               />
 
@@ -37,7 +37,7 @@
                 color="primary"
                 class="mr-4 mb-7"
                 :loading="loading"
-                @click="userRegister"
+                @click="dialog=true"
               >
                 إشتراك
                 <v-icon right>
@@ -46,6 +46,34 @@
               </v-btn>
             </v-form>
           </v-card-text>
+          <v-dialog v-model="dialog" persistent max-width="400">
+            <v-card>
+              <v-card-title class="headline">
+                تأكيد كلمة السر
+              </v-card-title>
+              <v-card-text>
+                يرجى تأكيد كلمة المرور الخاصة بك مرة ثانية
+                <v-text-field
+                  v-model="confirmPW"
+                  :append-icon="show ? 'fas fa-eye' : 'fas fa-eye-slash'"
+                  :rules="[rules.required]"
+                  :type="show ? 'text' : 'password'"
+                  label="تأكيد كلمة المرور"
+                  counter
+                  @click:append="show = !show"
+                />
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer />
+                <v-btn color="green darken-1" text @click="dialog = false">
+                  إلغاء
+                </v-btn>
+                <v-btn color="green darken-1" text @click="checkBeforeRegister">
+                  تأكيد
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-card>
         <v-snackbar
           v-model="snackbar"
@@ -82,6 +110,8 @@ export default {
       show: false,
       snackbar: false,
       messagetext: '',
+      confirmPW: '',
+      dialog: false,
       rules: {
         required: value => !!value || 'كلمة السر.'
       },
@@ -92,6 +122,14 @@ export default {
     }
   },
   methods: {
+    checkBeforeRegister () {
+      if (this.logIn.password === this.confirmPW && this.logIn.password) {
+        this.userRegister()
+        this.dialog = false
+      }
+      this.snackbar = true
+      this.messagetext = 'التأكيد غير صحيح يرجى المحاولة مرة ثانية'
+    },
     userRegister () {
       Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
       Parse.initialize(
