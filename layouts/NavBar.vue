@@ -141,12 +141,19 @@ export default {
   data: () => ({
     collapseOnScroll: true,
     drawer: false,
-    currentItem: '',
-    isInstalled: false
+    currentItem: ''
+    // isInstalled: false
   }),
   computed: {
     items () {
       return this.$store.state.mainCategories.items
+    },
+    isInstalled () {
+      let isInstalled = false
+      if (process.client) {
+        matchMedia('(display-mode: fullscreen)').matches || navigator.standalone ? isInstalled = true : isInstalled = false
+      }
+      return isInstalled
     }
   },
   methods: {
