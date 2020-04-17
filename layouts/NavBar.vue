@@ -112,13 +112,13 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-if="isInstalled" link ripple @click="installApp()">
+        <v-list-item v-if="!isInstalled" link ripple class="teal darken-4" @click="installApp()">
           <v-list-item-icon>
-            <v-icon>
+            <v-icon color="white">
               fas fa-download
             </v-icon>
           </v-list-item-icon>
-          <v-list-item-content>
+          <v-list-item-content class="white--text overline">
             تثبيت تطبيق الجمعية على جهازك
           </v-list-item-content>
         </v-list-item>
