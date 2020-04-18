@@ -126,9 +126,10 @@ export default {
       if (this.logIn.password === this.confirmPW && this.logIn.password) {
         this.userRegister()
         this.dialog = false
+      } else {
+        this.snackbar = true
+        this.messagetext = 'التأكيد غير صحيح يرجى المحاولة مرة ثانية'
       }
-      this.snackbar = true
-      this.messagetext = 'التأكيد غير صحيح يرجى المحاولة مرة ثانية'
     },
     userRegister () {
       Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
