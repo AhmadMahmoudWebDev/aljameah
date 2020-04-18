@@ -121,9 +121,13 @@ export default {
 }
 </script>
 <style scoped>
+  @font-face {
+    font-family: Quran;
+    src: url('~assets/quran.ttf');
+  }
   .holy-text {
     line-height: 1.7rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Quran,'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.3rem;
   }
 </style>
