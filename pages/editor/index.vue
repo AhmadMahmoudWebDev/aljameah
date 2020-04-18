@@ -29,6 +29,8 @@
         <v-card
           flat
           tile
+          dark
+          color="#004D40"
         >
           <v-card-text>
             <LatestNews v-if="item.title === 'أخبار الجمعية'" :color="item.color" />

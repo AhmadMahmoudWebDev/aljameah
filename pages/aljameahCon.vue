@@ -8,7 +8,7 @@
         sm="6"
         xl="6"
       >
-        <v-card dark :loading="loading">
+        <v-card dark :loading="loading" color="#004D40">
           <v-card-text>
             <v-card-title>تسجيل الدخول</v-card-title>
             <v-card-subtitle>تسجيل الدخول للوحة التحكم بالموقع</v-card-subtitle>
