@@ -131,7 +131,8 @@ export default {
                 phone: occasion.get('phone'),
                 gender: occasion.get('gender'),
                 deathDate: occasion.get('deathDate'),
-                buryDate: occasion.get('deathDate')
+                buryDate: occasion.get('deathDate'),
+                author: occasion.get('author')
               })
             })
             this.$localForage.occasions.setItem('occasions', this.occasions)

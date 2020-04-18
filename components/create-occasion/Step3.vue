@@ -29,7 +29,7 @@ export default {
     placeRules: [
       v => !!v || 'حقل مكان التعزية مطلوب',
       // eslint-disable-next-line no-misleading-character-class
-      v => v.match(/^[0-9٠-٩\sأ-يء ّ ءَ ً ُ]+$/) ? true : false || 'فقط أحرف عربية و أرقام',
+      v => v.match(/^[0-9٠-٩\sأ-يء ّ ءَ:. ً ُ]+$/) ? true : false || 'فقط أحرف عربية و أرقام',
       v => (v && v.length <= 254) || 'على الحقل ألا يتجاوز ال 254 حرف'
     ],
     phone: '',

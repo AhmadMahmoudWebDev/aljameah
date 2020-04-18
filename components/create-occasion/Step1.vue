@@ -38,13 +38,15 @@ export default {
     name: '',
     nameRules: [
       v => !!v || 'الإسم مطلوب',
+      // eslint-disable-next-line no-misleading-character-class
       v => v.match(/^[\sأ-يء ّ ءَ ً ُ]+$/) ? true : false || 'فقط أحرف عربية',
       v => (v && v.length <= 50) || 'على الإسم ألا يتجاوز ال 50 حرف'
     ],
     relatives: '',
     relativesRules: [
       v => !!v || 'حقل الأقارب مطلوب',
-      v => v.match(/^[\sأ-يء ّ ءَ ً ُ]+$/) ? true : false || 'فقط أحرف عربية',
+      // eslint-disable-next-line no-misleading-character-class
+      v => v.match(/^[\sأ-يء ّ ءَ.: ً ُ]+$/) ? true : false || 'فقط أحرف عربية',
       v => (v && v.length <= 100) || 'على الحقل ألا يتجاوز ال 100 حرف'
     ]
   }),

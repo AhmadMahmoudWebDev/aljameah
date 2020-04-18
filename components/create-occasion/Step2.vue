@@ -16,18 +16,18 @@
       <template v-slot:activator="{ on }">
         <v-text-field
           v-model="deathDate"
-          v-on="on"
           label="تاريخ الوفاة"
           prepend-icon="far fa-calendar-alt"
           readonly
+          v-on="on"
         />
       </template>
       <v-date-picker
         v-model="deathDate"
         :change="addToForm('deathDate', deathDate)"
-        @input="deathDatePicker = false"
         color="#212121"
         locale="ar-sy"
+        @input="deathDatePicker = false"
       />
     </v-menu>
     <v-text-field
@@ -58,18 +58,18 @@
       <template v-slot:activator="{ on }">
         <v-text-field
           v-model="buryDate"
-          v-on="on"
           label="تاريخ الوفاة"
           prepend-icon="far fa-calendar-alt"
           readonly
+          v-on="on"
         />
       </template>
       <v-date-picker
         v-model="buryDate"
         :change="addToForm('buryDate', buryDate)"
-        @input="buryDatePicker = false"
         color="#212121"
         locale="ar-sy"
+        @input="buryDatePicker = false"
       />
     </v-menu>
     <v-select
@@ -96,6 +96,7 @@ export default {
     mosqueName: '',
     nameRules: [
       v => !!v || 'الإسم مطلوب',
+      // eslint-disable-next-line no-misleading-character-class
       v => v.match(/^[\sأ-يء ّ ءَ ً ُ]+$/) ? true : false || 'فقط أحرف عربية',
       v => (v && v.length <= 50) || 'على الإسم ألا يتجاوز ال 50 حرف'
     ],

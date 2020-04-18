@@ -14,7 +14,7 @@ export const state = () => ({
     prayTime: '',
     place: '',
     phone: '',
-    author: 'محرّر الجمعية'
+    author: ''
   }
 })
 
