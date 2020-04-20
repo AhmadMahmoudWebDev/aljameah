@@ -5,8 +5,8 @@
         cols="12"
         sm="12"
         md="8"
-        lg="6"
-        xl="6"
+        lg="5"
+        xl="4"
       >
         <v-card
           dark
@@ -16,15 +16,15 @@
           raised
         >
           <v-card-text>
-            <h3>
+            <h3 class="white--text">
               الجمعية التضامنية الإجتماعية الخيرية
             </h3>
           </v-card-text>
           <v-card-subtitle class="pt-0">
             رقم و تاريخ شهرها: ٨٦٠-لعام ١٩٦٦<sub>م</sub> وتاريخ تعديل شهرها في ٢٨-٨-١٩٩٧<sub>م</sub>
           </v-card-subtitle>
-          <v-card-text>
-            <h3>
+          <v-card-text class="text-justify">
+            <h3 class="white--text">
               أهداف الجمعية:
             </h3>
             <ul class="px-4">

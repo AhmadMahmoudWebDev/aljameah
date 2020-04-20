@@ -56,13 +56,13 @@
                     <p class="font-weight-bold holy-text">
                       صدق اللَّهُ العظيم
                     </p>
-                    <p class="font-weight-bold holy-text">
+                    <p class="font-weight-bold holy-text pt-3">
                       إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ
                     </p>
                   </v-list-item-content>
                 </v-list-item>
 
-                <v-card-text class="grey--text text--lighten-2">
+                <v-card-text class="grey--text text--lighten-2 pt-0">
                   <span class="font-weight-bold title">
                     {{ items.gender === 'male' ? 'إنتقل' : 'إنتقلت' }} إلى رحمة اللّه تعالى
                   </span>
@@ -128,6 +128,6 @@ export default {
   .holy-text {
     line-height: 1.7rem;
     font-family: Quran,'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 </style>

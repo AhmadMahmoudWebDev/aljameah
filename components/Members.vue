@@ -1,6 +1,6 @@
 <template>
   <v-card-text>
-    <v-card-text>
+    <v-card-text class="white--text">
       أعضاء مجلس الإدارة:
     </v-card-text>
     <v-list-item v-for="(member) in members" :key="member.id">

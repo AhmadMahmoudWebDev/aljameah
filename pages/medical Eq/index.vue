@@ -7,7 +7,7 @@
         sm="8"
         md="8"
         lg="8"
-        xl="8"
+        xl="6"
       >
         <v-card
           :color="items['2'].color"
@@ -62,7 +62,7 @@
                 >
                   <v-img
                     :src="medicalEq.image1._url"
-                    cover
+                    contain
                   >
                     <template v-slot:placeholder>
                       <v-row
@@ -89,7 +89,7 @@
                 >
                   <v-img
                     :src="medicalEq.image2._url"
-                    cover
+                    contain=""
                   >
                     <template v-slot:placeholder>
                       <v-row
@@ -116,7 +116,7 @@
                 >
                   <v-img
                     :src="medicalEq.image3._url"
-                    cover
+                    contain
                   >
                     <template v-slot:placeholder>
                       <v-row
@@ -133,7 +133,7 @@
             </v-carousel-item>
           </v-carousel>
 
-          <v-card-text>
+          <v-card-text class="text-justify white--text">
             {{ medicalEq.excerpt }}
           </v-card-text>
 

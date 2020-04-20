@@ -6,10 +6,10 @@
         lg="6"
         md="6"
         sm="6"
-        xl="6"
+        xl="5"
       >
         <v-card dark :loading="loading" color="#004D40">
-          <v-card-text>
+          <v-card-text class="white--text">
             الإشتراك في موقع الجمعية
             <v-form
               ref="form"
@@ -47,7 +47,7 @@
             </v-form>
           </v-card-text>
           <v-dialog v-model="dialog" persistent max-width="400">
-            <v-card>
+            <v-card dark color="#004D40">
               <v-card-title class="headline">
                 تأكيد كلمة السر
               </v-card-title>
@@ -65,10 +65,10 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="green darken-1" text @click="dialog = false">
+                <v-btn color="white" text @click="dialog = false">
                   إلغاء
                 </v-btn>
-                <v-btn color="green darken-1" text @click="checkBeforeRegister">
+                <v-btn color="white" text @click="checkBeforeRegister">
                   تأكيد
                 </v-btn>
               </v-card-actions>

@@ -142,7 +142,7 @@
     <v-dialog v-model="editNewsDialog" max-width="500px">
       <v-card :loading="loading">
         <v-card-title>
-          <span class="headline"> تعديل العضو</span>
+          <span class="headline"> تعديل الخبر</span>
         </v-card-title>
 
         <v-card-text>

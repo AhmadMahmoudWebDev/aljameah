@@ -7,7 +7,7 @@
         sm="8"
         md="8"
         lg="8"
-        xl="8"
+        xl="6"
       >
         <v-card
           :color="items['1'].color"
@@ -27,7 +27,7 @@
         sm="6"
         md="6"
         lg="4"
-        xl="4"
+        xl="3"
       >
         <v-card
           dark
@@ -44,18 +44,18 @@
                 </h4>
               </v-list-item-title>
               <p class="holy-text">
-                يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ <i class="fas fa-bookmark" area-hidden="true" /> ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً <i class="fas fa-bookmark" area-hidden="true" /> فَادْخُلِي فِي عِبَادِي <i class="fas fa-bookmark" area-hidden="true" /> وَادْخُلِي جَنَّتيِ.
+                يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ <i class="fas fa-bookmark fa-xs" area-hidden="true" /> ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً <i class="fas fa-bookmark fa-xs" area-hidden="true" /> فَادْخُلِي فِي عِبَادِي <i class="fas fa-bookmark fa-xs" area-hidden="true" /> وَادْخُلِي جَنَّتيِ.
               </p>
-              <p class="holy-text">
+              <p class="holy-text text-left">
                 صدق اللَّهُ العظيم
               </p>
-              <p class="font-weight-bold holy-text">
+              <p class="font-weight-bold holy-text pt-3 pb-0 mb-0">
                 إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ
               </p>
             </v-list-item-content>
           </v-list-item>
 
-          <v-card-text class="grey--text text--lighten-2">
+          <v-card-text class="grey--text text--lighten-2 pt-0 mt-0">
             <span class="font-weight-bold">
               {{ occasion.gender === 'male' ? 'إنتقل' : 'إنتقلت' }} إلى رحمة اللّه تعالى
             </span>
@@ -68,11 +68,11 @@
             <p class="font-weight-bold mt-3">
               {{ occasion.relatives }}
             </p>
-            <p class="text-right">
+            <p class="text-righ text-justify">
               وذلك في <span class="font-weight-bold white--text">{{ occasion.deathTime }}</span> يوم {{ dayName(occasion.deathDate) }} <span class="font-weight-bold white--text" dir="rtl">{{ occasion.deathDate }}</span> ،
               الصلاة على {{ occasion.gender === 'male' ? 'المرحوم' : 'المرحومة' }} في جامع <span class="font-weight-bold white--text">{{ occasion.mosqueName }}</span> وسيتم الدفن في مقبرة <span class="font-weight-bold white--text">{{ occasion.graveyard }}</span> يوم {{ dayName(occasion.buryDate) }} <span class="font-weight-bold white--text" dir="rtl">{{ occasion.buryDate }}</span> بعد صلاة <span class="font-weight-bold white--text">{{ occasion.prayTime }}.</span>
             </p>
-            <p class="text-right">
+            <p class="text-right text-justify">
               تقبل التعازي في <span class="font-weight-bold white--text">{{ occasion.place }}</span> وذلك لمدة ثلاثة أيام من تاريخ الدفن.
             </p>
           </v-card-text>
@@ -165,6 +165,6 @@ export default {
   .holy-text {
     line-height: 1.7rem;
     font-family: Quran,'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 </style>

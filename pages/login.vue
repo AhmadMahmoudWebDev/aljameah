@@ -6,11 +6,15 @@
         lg="6"
         md="6"
         sm="6"
-        xl="6"
+        xl="5"
       >
         <v-card dark :loading="loading" color="#004D40">
-          <v-card-title>تسجيل الدخول</v-card-title>
-          <v-card-subtitle>يرجى تسجيل الدخول للموقع الجمعية لإنشاء مناسبة جديدة</v-card-subtitle>
+          <v-card-title class="white--text">
+            تسجيل الدخول
+          </v-card-title>
+          <v-card-subtitle class="white--text">
+            يرجى تسجيل الدخول للموقع الجمعية لإنشاء مناسبة جديدة
+          </v-card-subtitle>
           <v-card-text>
             <v-form
               ref="form"

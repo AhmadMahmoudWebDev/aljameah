@@ -7,7 +7,7 @@
         sm="8"
         md="8"
         lg="8"
-        xl="8"
+        xl="6"
       >
         <v-card
           :color="items['0'].color"
@@ -27,7 +27,7 @@
         sm="8"
         md="8"
         lg="8"
-        xl="8"
+        xl="6"
       >
         <v-card
           dark
@@ -35,116 +35,84 @@
           :color="items['0'].color"
           raised
         >
+          <v-row v-if="latestNew.image1 != undefined || latestNew.image2 != undefined || latestNew.image3 != undefined" dense>
+            <v-col
+              v-if="latestNew.image1 != undefined"
+              :key="latestNew.image1._name"
+              cols="12"
+            >
+              <v-img :src="latestNew.image1._url">
+                <v-avatar tile @click="previewImage(latestNew.title, latestNew.image1._url)">
+                  <v-icon>
+                    fa fa-search-plus
+                  </v-icon>
+                </v-avatar>
+              </v-img>
+            </v-col>
+            <v-col
+              v-if="latestNew.image2 != undefined"
+              :key="latestNew.image2._name"
+              cols="6"
+            >
+              <v-img :src="latestNew.image2._url">
+                <v-avatar tile @click="previewImage(latestNew.title, latestNew.image2._url)">
+                  <v-icon>
+                    fa fa-search-plus
+                  </v-icon>
+                </v-avatar>
+              </v-img>
+            </v-col>
+            <v-col
+              v-if="latestNew.image3 != undefined"
+              :key="latestNew.image3._name"
+              cols="6"
+            >
+              <v-img :src="latestNew.image3._url">
+                <v-avatar tile @click="previewImage(latestNew.title, latestNew.image3._url)">
+                  <v-icon>
+                    fa fa-search-plus
+                  </v-icon>
+                </v-avatar>
+              </v-img>
+            </v-col>
+          </v-row>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title>
+              <v-list-item-title class="text-center font-weight-bold">
                 {{ latestNew.title }}
               </v-list-item-title>
-              <v-list-item-subtitle>
+              <v-list-item-subtitle class="mb-0 pb-0 float-left">
                 {{ latestNew.updatedAt.toLocaleDateString() }}
-                <v-icon left>
+                <v-icon right small>
                   fas fa-calendar-alt
                 </v-icon>
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-
-          <v-carousel
-            v-if="latestNew.image1 != undefined || latestNew.image2 != undefined || latestNew.image3 != undefined"
-            show-arrows-on-hover
-            continuous
-            cycle
-            delimiter-icon="fas fa-image"
-            height="300"
-          >
-            <v-carousel-item v-if="latestNew.image1 != undefined" :key="latestNew.image1._name">
-              <v-sheet
-                height="100%"
-                color="rgba(0, 0, 0, .3)"
-              >
-                <v-row
-                  class="fill-height"
-                  align="center"
-                  justify="center"
-                >
-                  <v-img
-                    :src="latestNew.image1._url"
-                    cover
-                  >
-                    <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center"
-                      >
-                        <v-progress-circular indeterminate color="grey lighten-5" />
-                      </v-row>
-                    </template>
-                  </v-img>
-                </v-row>
-              </v-sheet>
-            </v-carousel-item>
-            <v-carousel-item v-if="latestNew.image2 != undefined" :key="latestNew.image2._name">
-              <v-sheet
-                height="100%"
-                color="rgba(0, 0, 0, .3)"
-              >
-                <v-row
-                  class="fill-height"
-                  align="center"
-                  justify="center"
-                >
-                  <v-img
-                    :src="latestNew.image2._url"
-                    cover
-                  >
-                    <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center"
-                      >
-                        <v-progress-circular indeterminate color="grey lighten-5" />
-                      </v-row>
-                    </template>
-                  </v-img>
-                </v-row>
-              </v-sheet>
-            </v-carousel-item>
-            <v-carousel-item v-if="latestNew.image3 != undefined" :key="latestNew.image3._name">
-              <v-sheet
-                height="100%"
-                color="rgba(0, 0, 0, .3)"
-              >
-                <v-row
-                  class="fill-height"
-                  align="center"
-                  justify="center"
-                >
-                  <v-img
-                    :src="latestNew.image3._url"
-                    cover
-                  >
-                    <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center"
-                      >
-                        <v-progress-circular indeterminate color="grey lighten-5" />
-                      </v-row>
-                    </template>
-                  </v-img>
-                </v-row>
-              </v-sheet>
-            </v-carousel-item>
-          </v-carousel>
-
-          <v-card-text>
+          <v-card-text class="text-justify white--text pt-0">
             {{ latestNew.excerpt }}
           </v-card-text>
         </v-card>
       </v-col>
+    </v-row>
+    <v-row justify="center">
+      <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+        <v-card dark color="rgba(0, 0, 0, 0.8)">
+          <v-toolbar dark :color="items['0'].color">
+            <v-btn icon dark @click="dialog = false">
+              <v-icon>fa-window-close</v-icon>
+            </v-btn>
+            <v-toolbar-title>{{ dialogImageTitle }}</v-toolbar-title>
+            <v-spacer />
+            <v-toolbar-items>
+              <v-btn dark text @click="dialog = false">
+                إغلاق
+              </v-btn>
+            </v-toolbar-items>
+          </v-toolbar>
+          <v-img :src="dialogImageUrl" />
+        </v-card>
+      </v-dialog>
     </v-row>
   </v-container>
 </template>
@@ -153,7 +121,10 @@ import Parse from 'parse'
 
 export default {
   data: () => ({
-    latestNews: []
+    latestNews: [],
+    dialog: false,
+    dialogImageTitle: '',
+    dialogImageUrl: ''
   }),
   computed: {
     items () {
@@ -197,6 +168,11 @@ export default {
           })
         }
       }
+    },
+    previewImage (imageTitle, imageUrl) {
+      this.dialog = true
+      this.dialogImageTitle = imageTitle
+      this.dialogImageUrl = imageUrl
     }
   }
 }

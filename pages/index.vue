@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-row>
+    <v-row justify="center">
       <v-col
         v-for="(item, i) in items"
         :key="i"
@@ -8,7 +8,7 @@
         sm="6"
         md="6"
         lg="6"
-        xl="3"
+        xl="4"
       >
         <v-card
           :color="item.color"

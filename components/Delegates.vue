@@ -6,7 +6,7 @@
     raised
     class="mt-3"
   >
-    <v-card-text>
+    <v-card-text class="white--text">
       مندوبين الجمعية التضامنية
       <v-spacer />
       <v-text-field
