@@ -92,8 +92,7 @@ export default {
       short_name: 'الجمعية التضامنية',
       theme_color: '#035251',
       background_color: '#358a77',
-      display: 'fullscreen',
-      orientation: 'portrait'
+      display: 'fullscreen'
     }
   },
   webfontloader: {
