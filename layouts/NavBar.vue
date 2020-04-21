@@ -78,6 +78,15 @@
         </v-list-item-content>
       </v-list-item>
 
+      <v-list-item v-if="currentUser" class="teal darken-4">
+        <v-list-item-content>
+          <v-list-item-title class="white--text text-center">
+            أهلاً {{ currentUser }}
+          </v-list-item-title>
+        </v-list-item-content>
+        <v-divider />
+      </v-list-item>
+
       <v-list dense>
         <v-list-item
           v-for="item in items"
@@ -128,6 +137,7 @@
 </template>
 
 <script>
+import Parse from 'parse'
 let deferredPrompt
 if (process.client) {
   window.addEventListener('beforeinstallprompt', (e) => {
@@ -142,18 +152,30 @@ export default {
     collapseOnScroll: true,
     drawer: false,
     currentItem: ''
-    // isInstalled: false
   }),
   computed: {
     items () {
       return this.$store.state.mainCategories.items
     },
     isInstalled () {
-      let isInstalled = false
+      return this.$store.state.mainCategories.isInstalled
+    },
+    currentUser () {
+      let username = null
       if (process.client) {
-        matchMedia('(display-mode: fullscreen)').matches || navigator.standalone ? isInstalled = true : isInstalled = false
+        Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
+        Parse.initialize(
+          'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
+          'YeNOM9wb8QBuaI8LBjyoKjps843U3P5VEU4CpbSi' // This is your Javascript key
+        )
+        const currentUser = Parse.User.current()
+        if (currentUser) {
+          username = currentUser.getUsername()
+        } else {
+          username = null
+        }
       }
-      return isInstalled
+      return username
     }
   },
   methods: {
@@ -164,7 +186,7 @@ export default {
           if (choiceResult.outcome === 'accepted') {
           // eslint-disable-next-line no-console
             console.log('User accepted the install prompt')
-            this.isInstalled = true
+            this.$store.commit('mainCategories/installed')
           } else {
           // eslint-disable-next-line no-console
             console.log('User dismissed the install prompt')

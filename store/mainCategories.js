@@ -1,4 +1,5 @@
 export const state = () => ({
+  isInstalled: false,
   items: [
     // Keep The Order
     {
@@ -36,3 +37,9 @@ export const state = () => ({
   ]
 }
 )
+
+export const mutations = {
+  installed (state) {
+    state.isInstalled = true
+  }
+}

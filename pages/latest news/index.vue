@@ -29,70 +29,105 @@
         lg="8"
         xl="6"
       >
-        <v-card
+        <v-skeleton-loader
+          boilerplate
+          type="card"
+          tile
+          class="mx-auto"
           dark
-          shaped
-          :color="items['0'].color"
-          raised
         >
-          <v-row v-if="latestNew.image1 != undefined || latestNew.image2 != undefined || latestNew.image3 != undefined" dense>
-            <v-col
-              v-if="latestNew.image1 != undefined"
-              :key="latestNew.image1._name"
-              cols="12"
-            >
-              <v-img :src="latestNew.image1._url">
-                <v-avatar tile @click="previewImage(latestNew.title, latestNew.image1._url)">
-                  <v-icon>
-                    fa fa-search-plus
+          <v-card
+            dark
+            shaped
+            :color="items['0'].color"
+            raised
+          >
+            <v-row v-if="latestNew.image1 != undefined || latestNew.image2 != undefined || latestNew.image3 != undefined" dense>
+              <v-col
+                v-if="latestNew.image1 != undefined"
+                :key="latestNew.image1._name"
+                cols="12"
+              >
+                <v-img :src="latestNew.image1._url">
+                  <v-avatar tile @click="previewImage(latestNew.title, latestNew.image1._url)">
+                    <v-icon>
+                      fa fa-search-plus
+                    </v-icon>
+                  </v-avatar>
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular indeterminate color="grey lighten-5" />
+                    </v-row>
+                  </template>
+                </v-img>
+              </v-col>
+              <v-col
+                v-if="latestNew.image2 != undefined"
+                :key="latestNew.image2._name"
+                cols="8"
+              >
+                <v-img :src="latestNew.image2._url">
+                  <v-avatar tile @click="previewImage(latestNew.title, latestNew.image2._url)">
+                    <v-icon>
+                      fa fa-search-plus
+                    </v-icon>
+                  </v-avatar>
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular indeterminate color="grey lighten-5" />
+                    </v-row>
+                  </template>
+                </v-img>
+              </v-col>
+              <v-col
+                v-if="latestNew.image3 != undefined"
+                :key="latestNew.image3._name"
+                cols="4"
+              >
+                <v-img :src="latestNew.image3._url">
+                  <v-avatar tile @click="previewImage(latestNew.title, latestNew.image3._url)">
+                    <v-icon>
+                      fa fa-search-plus
+                    </v-icon>
+                  </v-avatar>
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular indeterminate color="grey lighten-5" />
+                    </v-row>
+                  </template>
+                </v-img>
+              </v-col>
+            </v-row>
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title class="text-center font-weight-bold">
+                  {{ latestNew.title }}
+                </v-list-item-title>
+                <v-list-item-subtitle class="pt-2 float-left">
+                  {{ latestNew.updatedAt.toLocaleDateString() }}
+                  <v-icon right small>
+                    fas fa-calendar-alt
                   </v-icon>
-                </v-avatar>
-              </v-img>
-            </v-col>
-            <v-col
-              v-if="latestNew.image2 != undefined"
-              :key="latestNew.image2._name"
-              cols="6"
-            >
-              <v-img :src="latestNew.image2._url">
-                <v-avatar tile @click="previewImage(latestNew.title, latestNew.image2._url)">
-                  <v-icon>
-                    fa fa-search-plus
-                  </v-icon>
-                </v-avatar>
-              </v-img>
-            </v-col>
-            <v-col
-              v-if="latestNew.image3 != undefined"
-              :key="latestNew.image3._name"
-              cols="6"
-            >
-              <v-img :src="latestNew.image3._url">
-                <v-avatar tile @click="previewImage(latestNew.title, latestNew.image3._url)">
-                  <v-icon>
-                    fa fa-search-plus
-                  </v-icon>
-                </v-avatar>
-              </v-img>
-            </v-col>
-          </v-row>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title class="text-center font-weight-bold">
-                {{ latestNew.title }}
-              </v-list-item-title>
-              <v-list-item-subtitle class="mb-0 pb-0 float-left">
-                {{ latestNew.updatedAt.toLocaleDateString() }}
-                <v-icon right small>
-                  fas fa-calendar-alt
-                </v-icon>
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-card-text class="text-justify white--text pt-0">
-            {{ latestNew.excerpt }}
-          </v-card-text>
-        </v-card>
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-card-text class="text-justify white--text pt-0">
+              {{ latestNew.excerpt }}
+            </v-card-text>
+          </v-card>
+        </v-skeleton-loader>
       </v-col>
     </v-row>
     <v-row justify="center">
@@ -137,8 +172,7 @@ export default {
   methods: {
     loadLatestNews () {
       if (process.client) {
-        const online = navigator.onLine
-        if (online) {
+        if (this.$nuxt.isOnline) {
           Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
           Parse.initialize(
             'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID

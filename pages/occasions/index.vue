@@ -68,7 +68,7 @@
             <p class="font-weight-bold mt-3">
               {{ occasion.relatives }}
             </p>
-            <p class="text-righ text-justify">
+            <p class="text-right text-justify" style="text-indent: 4rem;">
               وذلك في <span class="font-weight-bold white--text">{{ occasion.deathTime }}</span> يوم {{ dayName(occasion.deathDate) }} <span class="font-weight-bold white--text" dir="rtl">{{ occasion.deathDate }}</span> ،
               الصلاة على {{ occasion.gender === 'male' ? 'المرحوم' : 'المرحومة' }} في جامع <span class="font-weight-bold white--text">{{ occasion.mosqueName }}</span> وسيتم الدفن في مقبرة <span class="font-weight-bold white--text">{{ occasion.graveyard }}</span> يوم {{ dayName(occasion.buryDate) }} <span class="font-weight-bold white--text" dir="rtl">{{ occasion.buryDate }}</span> بعد صلاة <span class="font-weight-bold white--text">{{ occasion.prayTime }}.</span>
             </p>
@@ -105,8 +105,7 @@ export default {
   methods: {
     loadOccasions () {
       if (process.client) {
-        const online = navigator.onLine
-        if (online) {
+        if (this.$nuxt.isOnline) {
           Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
           Parse.initialize(
             'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID

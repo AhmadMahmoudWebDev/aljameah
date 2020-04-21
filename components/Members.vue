@@ -54,8 +54,7 @@ export default {
   methods: {
     loadMembers () {
       if (process.client) {
-        const online = navigator.onLine
-        if (online) {
+        if (this.$nuxt.isOnline) {
           Parse.serverURL = 'https://parseapi.back4app.com' // This is your Server URL
           Parse.initialize(
             'nmEfF3xwLXGr4qlXeUccFmXlK0jA2bdy8UrY61U9', // This is your Application ID
