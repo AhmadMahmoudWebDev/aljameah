@@ -177,8 +177,10 @@ export default {
     }
   },
   created () {
-    if (this.$localForage.generalInfo.getItem('isInstall')) {
+    try {
       this.isInstalled = this.$localForage.generalInfo.getItem('isInstall')
+    } catch {
+      this.isInstalled = false
     }
   },
   methods: {

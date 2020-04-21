@@ -4,6 +4,16 @@
     <v-spacer />
     <v-content class="pt-12 mt-12">
       <v-container class="pt-12 mt-12">
+        <v-alert
+          v-if="$nuxt.isOffline"
+          prominent
+          type="info"
+          class="caption"
+        >
+          إن التطبيق الآن يعمل بوضع غير متصل بالإنترنيت يمكنك مشاهدة آخر الأخبار و المناسبات التي تمت مشاهدتها مسبقاً <v-btn to="/" color="success">
+            إعادة التحميل
+          </v-btn>
+        </v-alert>
         <nuxt />
       </v-container>
     </v-content>
