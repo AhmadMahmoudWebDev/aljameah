@@ -193,7 +193,7 @@ export default {
           if (choiceResult.outcome === 'accepted') {
           // eslint-disable-next-line no-console
             console.log('User accepted the install prompt')
-            this.$localForage.generalInfo.setItem('isInstall', true)
+            this.$localForage.generalInfo.setItem('isInstall', 'true')
           } else {
           // eslint-disable-next-line no-console
             console.log('User dismissed the install prompt')
