@@ -178,7 +178,9 @@ export default {
   },
   created () {
     try {
-      this.isInstalled = this.$localForage.generalInfo.getItem('isInstall')
+      if (process.client) {
+        this.isInstalled = this.$localForage.generalInfo.getItem('isInstall')
+      }
     } catch {
       this.isInstalled = false
     }
