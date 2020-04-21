@@ -151,14 +151,12 @@ export default {
   data: () => ({
     collapseOnScroll: true,
     drawer: false,
-    currentItem: ''
+    currentItem: '',
+    isInstalled: false
   }),
   computed: {
     items () {
       return this.$store.state.mainCategories.items
-    },
-    isInstalled () {
-      return this.$store.state.mainCategories.isInstalled
     },
     currentUser () {
       let username = null
@@ -178,6 +176,11 @@ export default {
       return username
     }
   },
+  created () {
+    if (this.$localForage.generalInfo.getItem('isInstall')) {
+      this.isInstalled = this.$localForage.generalInfo.getItem('isInstall')
+    }
+  },
   methods: {
     installApp () {
       if (process.client) {
@@ -186,7 +189,7 @@ export default {
           if (choiceResult.outcome === 'accepted') {
           // eslint-disable-next-line no-console
             console.log('User accepted the install prompt')
-            this.$store.commit('mainCategories/installed')
+            this.$localForage.generalInfo.setItem('isInstall', true)
           } else {
           // eslint-disable-next-line no-console
             console.log('User dismissed the install prompt')

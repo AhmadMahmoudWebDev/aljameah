@@ -59,6 +59,9 @@ export default {
     }, {
       name: 'aljameah',
       storeName: 'medicalEqs'
+    }, {
+      name: 'aljameah',
+      storeName: 'generalInfo'
     }]
   },
   /*
