@@ -177,23 +177,25 @@ export default {
     }
   },
   created () {
-    try {
-      if (process.client) {
-        this.isInstalled = this.$localForage.generalInfo.getItem('isInstall')
-      }
-    } catch {
-      this.isInstalled = false
+    if (process.client) {
+      this.$localForage.generalInfo.getItem('isInstall').then((isInstall) => {
+        this.isInstalled = isInstall
+        // eslint-disable-next-line no-console
+        console.log(isInstall)
+      }).catch(this.isInstalled = false)
     }
   },
   methods: {
     installApp () {
       if (process.client) {
+        // eslint-disable-next-line no-console
+        console.log('installed clicked')
         deferredPrompt.prompt()
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
           // eslint-disable-next-line no-console
             console.log('User accepted the install prompt')
-            this.$localForage.generalInfo.setItem('isInstall', 'true')
+            this.$localForage.generalInfo.setItem('isInstall', true)
           } else {
           // eslint-disable-next-line no-console
             console.log('User dismissed the install prompt')
